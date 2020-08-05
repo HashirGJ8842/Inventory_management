@@ -1,10 +1,20 @@
 <template>
   <div :class="getCardStyle(notification.type)" style="width: 100%">
-    <div class="card-header">{{ getCardHeader(notification.type) }}</div>
-    <div class="card-body">
-      <p class="card-text">{{ notification.body }}</p>
-    </div>
-    <div class="card-footer">{{ notification.name }}</div>
+      <div v-if="notification.type == 'issue'">
+          <div class="card-header">{{ getCardHeader(notification.type) }}</div>
+            <div class="card-body">
+            <p class="card-text">{{ notification.body }}</p>
+            <v-btn>Approve</v-btn>
+            </div>
+            <div class="card-footer">{{ notification.name }}</div>
+      </div>
+      <div v-else>
+          <div class="card-header">{{ getCardHeader(notification.type) }}</div>
+        <div class="card-body">
+        <p class="card-text">{{ notification.body }}</p>
+        </div>
+        <div class="card-footer">{{ notification.name }}</div>
+      </div>
   </div>
 </template>
 
