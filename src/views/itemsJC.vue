@@ -38,8 +38,18 @@ export default {
     },
     mounted(){
         this.getItems()
+        this.check()
+    },
+    created(){
+        this.check()
     },
     methods:{
+        check(){
+            if(!this.$store.state.admin)
+            {
+                this.$router.push({name: 'Home'}).catch(() => {})
+            }
+        },
         async getItems()
         {
             /* eslint-disable */
