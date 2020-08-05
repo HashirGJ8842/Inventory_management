@@ -4,7 +4,7 @@
           <div class="card-header">{{ getCardHeader(notification.type) }}</div>
             <div class="card-body">
             <p class="card-text">{{ notification.body }}</p>
-            <v-btn>Approve</v-btn>
+            <v-btn @click="agreedClickHandler()">Approve</v-btn>
             </div>
             <div class="card-footer">{{ notification.name }}</div>
       </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { db } from '../main'
 export default {
     props: ['notification'],
     methods: {
@@ -48,6 +49,16 @@ export default {
         getCardHeader(type)
         {
             return `Notification for :- ${type.charAt(0).toUpperCase() + type.slice(1)}`
+        },
+        agreedClickHandler()
+        {
+            db.ref('notification').push({
+            Name: this.$store.state.user.displayName,
+            Email: this.$store.state.user.email,
+            Body: `${this.$store.state.user.displayName} has agreed to the booking.`,
+            Type: 'info-agreed'
+          })
+          this.$router.push({name: 'JC'})
         }
     }
 } 
