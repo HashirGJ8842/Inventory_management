@@ -1,0 +1,27 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+	<script src="https://smtpjs.com/v3/smtp.js"></script>  
+<input type="button" value="Send Email" onclick="sendEmail()">
+<script>
+function sendEmail() {
+	Email.send({
+    SecureToken : "516b8123-d120-42df-9bc2-de17edd0f342",
+    To : 'sanchitaagrawal50@gmail.com, rizochem@gmail.com',
+    From : "abc@example.com",
+    Subject : "Test Email",
+    Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
+    }).then(
+        message => alert("mail sent successfully")
+	);
+	console.log("Hello")
+}
+</script>
+
+</body>
+
+</html>
